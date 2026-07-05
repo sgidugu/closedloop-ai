@@ -18,6 +18,7 @@ export const GET = withAnyAuth<
     const { idOrSlug, version: versionStr } = await params;
     if (!DIGITS_ONLY.test(versionStr)) {
       return badRequestResponse("Version must be a positive integer");
+      /* this is a temporary fix to avoid the error when the version is not a number. We should handle this better in the future. */
     }
     const version = Number(versionStr);
     if (version < 1) {
